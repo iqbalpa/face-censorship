@@ -11,7 +11,8 @@ def censor_image(input_path: str, output_path: str):
   for key in obj.keys():
     identity = obj[key]
     facial_area = identity['facial_area']
-    util.draw_box(img, facial_area)
+    # util.draw_box(img, facial_area)
+    img = util.blur_face(img, facial_area)
   
   # save the image
   cv2.imwrite(output_path, img)

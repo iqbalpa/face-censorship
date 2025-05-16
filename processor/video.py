@@ -29,7 +29,8 @@ def censor_video(input_path: str, output_path: str):
       faces = RetinaFace.detect_faces(frame)
       if isinstance(faces, dict):
           for key in faces:
-              util.draw_box(frame, faces[key]['facial_area'])
+              # util.draw_box(frame, faces[key]['facial_area'])
+              frame = util.blur_face(frame, faces[key]['facial_area'])
 
       # Write modified frame
       out.write(frame)
